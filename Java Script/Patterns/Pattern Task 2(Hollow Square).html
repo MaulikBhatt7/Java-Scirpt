@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Pattern Task 2</title>
+</head>
+<body>
+	<script type="text/javascript">
+		n = parseInt(prompt("Enter number of rows of pattern : "));
+		//pattern-2 Hollow Square
+		for(i=1;i<=n;i++){
+			for(j=1;j<=n;j++){
+				if(i==1 || i==n || j==1 || j==n){
+					document.write("* ");
+				}
+				else{
+					document.write("&nbsp&nbsp&nbsp");
+				}
+			}
+			document.write("<br/>");
+		}
+	</script>
+</body>
+</html>
