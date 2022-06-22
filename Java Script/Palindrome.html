@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Palindrome</title>
+</head>
+<body>
+	<script type="text/javascript">
+		p=0
+		n = parseInt(prompt("Enter number : "))
+		temp=n
+		while(n!=0){
+			r=n%10
+			n=parseInt(n/10)
+			p=p*10+r
+		}
+		if(p==temp){
+			document.write("Given number is Palindrome")
+		}
+		else{
+			document.write("Given number is not Palindrome")
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Print Prime Number</title>
+</head>
+<body>
+	<script type="text/javascript">
+		n1 = parseInt(prompt("Enter number 1 : "))
+		n2 = parseInt(prompt("Enter number 2 : "))
+		if(n2>n1){
+			a = n1
+			b = n2
+		}
+		else{
+			a = n2
+			b = n1
+		}
+		for(i=a+1;i<b;i++){
+			flag=true
+			for(j=2;j<i;j++){
+				if(i%j==0){
+					flag=false
+					break;
+				}
+			}
+			if(flag){
+				document.write(i+"<br/>")
+			}
+		}
+	</script>
+</body>
+</html>
