@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Array Sorting</title>
+</head>
+<body>
+	<script type="text/javascript">
+		n=parseInt(prompt("Enter size of a array : "));
+		var array=new Array();
+		for(i=0;i<n;i++){
+			array[i]=parseInt(prompt("Enter array element : "));
+		}
+		for(j=0;j<n-1;j++){
+			//find minimum
+			currentMin=parseInt(array[j]);
+			currentMinIndex=parseInt(j);
+			for(k=j+1;k<n;k++){
+				if(currentMin>array[k]){
+					currentMin=array[k];
+					currentMinIndex=k;
+				}
+				//Swap numbers
+				if(currentMinIndex!=j){
+					array[currentMinIndex]=array[j];
+					array[j]=currentMin;
+				}
+			}
+		}
+		for(m=0;m<n;m++){
+			document.write(array[m]+"</br>")
+		}
+	</script>
+</body>
+</html>
