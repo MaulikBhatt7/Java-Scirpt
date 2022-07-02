@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sum until single digit</title>
+</head>
+<body>
+	<script type="text/javascript">
+		n=parseInt(prompt("Enter number : "));
+		sum=0;
+		i=0
+		var a = new Array()
+		while(n!=0){
+			r=n%10;
+			n=parseInt(n/10);
+			a[i]=r
+			i++;
+		}
+		for(j=a.length-1;j>=0;j--){
+			sum+=a[j];
+			if(sum>9){
+				sum-=a[j]
+				break;
+			}
+		}
+		document.write("Sum = "+sum);
+	</script>
+</body>
+</html>
