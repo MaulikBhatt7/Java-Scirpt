@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Timer</title>
+</head>
+<body>
+	
+
+	<div align="center">
+		<h1>Timer!</h1>
+		<h2>Enter starting time :</h2>
+		<input type="text" id="input"><br><br>
+		<button id="start" onclick="start()">Start</button>
+		<button id="pause" onclick="pause()">Pause</button>
+		<button id="reset" onclick="reset()">Reset</button>
+		<img src="" id="img" disabled>
+
+		<h1 id="h1">0</h1>
+	</div>
+	
+
+	<script type="text/javascript">
+		var h1=document.getElementById("h1");
+		var a=document.getElementById("input");
+		var text=document.getElementById("input");	
+		var btnStart=document.getElementById("start");
+		var img = `<img src="https://i.ytimg.com/vi/ic7S6yVgY4A/maxresdefault.jpg">`;
+		var flag=true
+		function start(){	
+			if(flag){
+				flag=false;
+				m=a.value;
+			}
+				btnStart.disabled = true;
+				temp=setInterval(startCount,1000);
+				a.value="";								
+		}
+		function startCount(){
+			m--;
+			if(m>=0){
+				h1.innerHTML=m;
+			}
+			else{
+				clearInterval(temp);
+				document.write(img);
+			}
+		}
+		function pause(){
+			btnStart.disabled = false;
+			clearInterval(temp); 	
+		}
+		function reset(){
+			btnStart.disabled = false;
+			clearInterval(temp);
+			h1.innerHTML=0;
+			a.value="";
+			m=0;
+		}
+	</script>
+</body>
+</html>
