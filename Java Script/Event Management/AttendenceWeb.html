@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendence</title>
+    <style>
+        body{
+            background: white;
+        }
+        button{
+            width: 70px;
+            border-radius: 10px
+        }
+        textarea{
+            background-color: red;
+            color: white;
+            float: left;
+            font-size: 15px;
+        }
+        #box
+        {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            height: 300px;
+            width: 600px;
+            background-color: pink;
+            color: blue;
+            font-size: 250px;
+            text-align: center;
+            border: 5px solid black;
+            border-radius: 20px
+        }
+        button
+        {
+            margin-right: 10px;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            background-color: lightblue;
+        }
+        #confirm 
+        {
+            margin-left: 80px;
+        }
+        #absentBox{
+            float: left;
+            padding-left: 50px 
+
+        }
+        .btnClass{
+            float: left;
+            padding-left: 50px;
+        }
+        textarea{
+            border: 5px solid black;
+            border-radius: 20px
+
+        }
+    
+    </style>
+</head>
+<body onkeydown="enterEvent(event)">
+    <center>
+        <h1 style="background-color: darkblue; color: white;">Welcome, to the advanced site of Attendence</h1>
+        <table>
+            <tr>
+                <td style="font-size: 30px; color : red;"><b>Enter the starting number : &nbsp;&nbsp;</b></td>
+                <td><input type="number" id="starting"></td>
+
+            </tr>
+            <tr>
+                <td style="font-size: 30px; color : red;"><b>Enter the ending number &nbsp;&nbsp;: &nbsp;&nbsp;</b></td>
+                <td><input type="number" id="ending"></td>
+            </tr>
+            <tr>
+                <td><button id="confirm" onclick="confirm()">confirm</button></td>
+                <td><button id="reset"   onclick="reset()"  >reset</button></td>
+                <td> 
+                    <button id="start" onclick="start()" onkeypress="enterEvent(event)">Start</button>
+                </td>
+            </tr>
+        </table>
+    </center>
+    <span id="absentBox">
+        <u style="color: blue;"><b><h2 style="margin-left: 80px; color: blue;">Absent participates</h2></b></u>
+        <div><textarea id="absent_participates" rows="25" cols="50"></textarea></div>
+        
+    </span>
+  
+    
+    <span class="btnClass"> 
+        <button id="a" onclick="a()">A</button>
+        <button id="b" onclick="b()">B</button>
+        <button id="c" onclick="c()">C</button>
+        <button id="d" onclick="d()">D</button>
+    </span><br>
+
+    
+
+      <center>
+        <!-- <button id="start" style="margin-bottom: 20px;" onclick="start()" onkeypress="enterEvent(event)">Start</button>       -->
+
+        <span>
+            <button id="absent" onclick="absent()">  Mark Absent   </button>
+                
+            <button id="present" onclick="checking()"> Mark present  </button>
+        </span>
+        <div id="box">
+        </div>
+        
+    </center>
+   
+    <script>
+        starting  = document.getElementById("starting");
+        ending    = document.getElementById("ending");
+        prints    = document.getElementById("box");
+        ab_parti  = document.getElementById("absent_participates");
+        absentButton = document.getElementById("absent");
+        presentButton = document.getElementById("present");
+        btnA = document.getElementById("a")
+        btnB = document.getElementById("b")
+        btnC = document.getElementById("c")
+        btnD = document.getElementById("d")
+        btnStart = document.getElementById("start");
+        btnStart.disabled=true;
+        function confirm()
+        {
+           if(starting.value>ending.value || starting.value<1 || ending.value<1){
+            alert("Enter valid numbers");
+            starting.value='';
+            ending.value='';
+            btnStart.disabled=true;
+           }
+           else{
+            btnStart.disabled=false;
+           }
+        }
+
+        function reset()
+        {
+            starting.value = '';
+            ending.value = '';
+            absentButton.disabled = false;
+            presentButton.disabled = false;
+            btnStart.disabled=true;
+        }
+
+        function start()
+        {
+            prints.innerHTML = starting.value;
+        }
+        function a(){
+            ab_parti.innerHTML="A : "
+            btnB.disabled=true;
+            btnC.disabled=true;
+            btnD.disabled=true;
+            btnA.disabled=true;
+
+        }
+        function b(){
+            ab_parti.innerHTML=ab_parti.innerHTML+"\n"+"B : "
+            btnB.disabled=true;
+            btnC.disabled=true;
+            btnD.disabled=true;
+            btnA.disabled=true;
+
+        }
+        function c(){
+            ab_parti.innerHTML=ab_parti.innerHTML+"\n"+"C : "
+            btnB.disabled=true;
+            btnC.disabled=true;
+            btnD.disabled=true;
+            btnA.disabled=true;
+
+        }
+        function d(){
+            ab_parti.innerHTML=ab_parti.innerHTML+"\n"+"D : "
+            btnB.disabled=true;
+            btnC.disabled=true;
+            btnD.disabled=true;
+            btnA.disabled=true;
+
+        }
+        function absent()
+        {
+            ab_parti.innerHTML = ab_parti.innerHTML+prints.innerHTML+", ";
+            
+            checking();
+        }
+        function present()
+        {
+            checking();
+        }
+        function checking()
+        {   
+
+            if(parseInt(prints.innerHTML)<ending.value)
+            {
+                prints.innerHTML++;
+                console.log(prints.innerHTML);
+            }
+            else
+            {
+                prints.innerHTML = "over";
+                ab_parti.innerHTML = ab_parti.innerHTML.substring(0,ab_parti.innerHTML.length-2);
+
+                absentButton.disabled = true;
+                presentButton.disabled = true;
+                btnB.disabled=false
+                btnC.disabled=false
+                btnD.disabled=false
+                btnA.disabled=false
+            }
+        }
+        function enterEvent(event){
+            
+            if(event.keyCode==13){
+                checking();
+            }
+            else if(event.keyCode==8){
+                absent();
+            }
+        }
+
+
+
+    </script>
+</body>
+</html>
